@@ -1,9 +1,10 @@
 const express = require('express')
 
 
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const Job = require('./models/Job')
+const connectDB = require('./config/db')
 
 dotenv.config()
 
@@ -11,9 +12,8 @@ const app = express()
 
 app.use(express.json())
 
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log('Mongob connceted'))
-    .catch(err => console.log(err))
+connectDB()
+
 app.get('/', (req, res) => {
     res.send('job Tracker Api Running')
 })
