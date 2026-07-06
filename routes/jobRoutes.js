@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const Job = require('../models/Job')
+const { getAllJobs } = require('../controllers/jobController')
+
 
 router.post('/api/jobs', async (req, res) => {
     try {
@@ -13,14 +14,8 @@ router.post('/api/jobs', async (req, res) => {
     }
 })
 
-router.get('/', async (req, res) => {
-    try {
-        const jobs = await Job.find()
-        res.status(200).json(jobs)
-    } catch (error) {
-        res.status(500).json({ message: error.message })
-    }
-})
+router.get('/', getAllJobs)
+
 router.get('/api/jobs/:id', async (req, res) => {
     try {
         const job = await Job.findById(req.params.id)
