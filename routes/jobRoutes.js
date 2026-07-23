@@ -7,10 +7,13 @@ const {
     updateJob,
     deleteJob
 } = require('../controllers/jobController')
+const { protect } = require('../middleware/authMiddleware')
 
-router.post('/', createJob)
+router.get('/:id', protect, getJob)
 
-router.get('/', getAllJobs)
+router.put('/:id', protect, updateJob)
+
+router.delete('/:id', protect, deleteJob)
 
 router.get('/:id', getJob)
 

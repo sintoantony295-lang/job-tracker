@@ -13,6 +13,11 @@ const jobSchema =new mongoose.Schema({
     status:{
         type:String,
          default:'Applied'
-    }
+    },
+    user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+}
 })
 module.exports = mongoose.model('Job',jobSchema)
