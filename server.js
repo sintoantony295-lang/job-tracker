@@ -1,3 +1,7 @@
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '8.8.4.4']);
+
+// rest of your imports/code, including mongoose.connect(...)no
 const express = require('express')
 const dotenv = require('dotenv')
 const connectDB = require('./config/db')
